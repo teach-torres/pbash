@@ -1,7 +1,16 @@
+<!-- MarkdownTOC -->
 
+- [0. My first Program](#1-My-first-program)
+- [1. Matrix Calculus via Differentials](#1-matrix-calculus-via-differentials)
+  * [1.1 Differential Identities](#11-differential-identities)
+  * [1.2 Deriving Matrix Derivatives](#12-deriving-matrix-derivatives)
+    + [1.2.1 Abstract examples: repeat identities 1](#121-abstract-examples-repeat-identities-1)
+    + [1.2.2 Actual examples: assisted by identities 2](#122-actual-examples-assisted-by-identities-2)
+- [2. Conclusion](#2-conclusion)
 
-# Content
-## My first Program
+<!-- /MarkdownTOC -->
+
+## 1. My first Program
 
 You should be in your home directory, which you can find in the variable $HOME:
 ```terminal
