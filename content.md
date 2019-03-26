@@ -86,51 +86,57 @@ shell environment, while ./ executes the provided executable script in a new she
 source command do have a synonym . filename.
 
 >> To make it more clear, have a look at the following script, which sets the alias.
+
 make_alias
 
+```terminal
 #! /bin/bash
-
 alias myproject='cd ~/Documents/Projects/2015/NewProject'
+```
 
-Now we have two choices to execute this script. But with only one option, the desired alias for current shell can be created among these two options.
-Option 1: ./make_alias
+Now we have two choices to execute this script. But with only one option, the desired alias for 
+current shell can be created among these two options.
+
+**Option 1: ./make_alias**
 
 Make script executable first.
-
+```terminal
 chmod +x make_alias
-
+```
 Execute
-
+```terminal
 ./make_alias
+```
 
 Verify
-
+```terminal
 alias
-
+```
 Output
-
+```terminal
 **nothing**
-
+```
 Whoops! Alias is gone with the new shell.
 
 Let's go with the second option.
-Option 2: source make_alias
+
+**Option 2: source make_alias**
 Execute
-
+```terminal
 source make_alias
-
+```
 or
-
+```terminal
 . make_alias
-
+```
 Verify
-
+```terminal
 alias
-
+```
 Output
-
+```terminal
 alias myproject='cd ~/Documents/Projects/2015/NewProject'
-
+```
 Yeah Alias is set.
 
 
