@@ -77,6 +77,36 @@ For this change to be applied to every shell you open, add it to a file that the
 invoked. This will be .bash_profile, .bashrc, or .profile depending on how bash is invoked. These files
 are sourced only for interactive shells, not for scripts.
 
+### Creating the File and Running the Script
+Usually you would use a text editor to create your program, but for a simple script like this, it’s not necessary
+to call up an editor. You can create the file from the command line using redirection:
+
+```terminal
+echo echo Hello, World! > bin/hw
+```
+
+The greater-than sign (>) tells the shell to send the output of a command to the specified file, rather than
+to the terminal. 
+
+The program can now be run by calling it as an argument to the shell command:
+
+```terminal
+bash bin/hw
+```
+
+That works, but it’s not entirely satisfactory. You want to be able to type hw, without having to precede it
+with bash, and have the command executed. To do that, give the file execute permissions:
+
+```terminal
+chmod +x bin/hw
+```
+
+Now the command can be run using just its name:
+
+```terminal
+$ hw
+Hello, World!
+```
 . (a period) is a bash shell built-in command that executes the commands from a file passed as argument, 
 in the current shell. 'source' is a synonym for '.'.
 
