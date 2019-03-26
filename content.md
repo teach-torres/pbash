@@ -1,3 +1,8 @@
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js? 
+config=TeX-MML-AM_CHTML"
+</script>
+
 # Content
 ## My first Program
 
@@ -5,6 +10,8 @@ You should be in your home directory, which you can find in the variable $HOME:
 ```terminal
 $ echo "$HOME"
 ```
+
+$$x_{1,2} = \frac{-b \pm \sqrt{b^2-4ac}}{2b}.$$
 
 You can find the current directory with either the pwd command or the PWD variable:
 ```terminal
