@@ -308,6 +308,26 @@ number of arguments and the exit code of the last command. Their names are nonal
 The value of a parameter is accessed by preceding its name, number, or character with a dollar sign, as
 in $3, $#, or $HOME. The name may be surrounded by braces, as in ${10}, ${PWD}, or ${USER}.
 
+Positional Parameters
 
+The arguments on the command line are available to a shell program as numbered parameters. The first
+argument is $1, the second is $2, and so on.
+
+You can make the hw script from chapter 1 more flexible by using a positional parameter. Listing 2-1
+calls it hello.
+
+Listing 2-1. hello
+```
+#: Description: print Hello and the first command-line argument
+printf "Hello, %s!\n" "$1"
+```
+
+Now you can call the script with an argument to change its output:
+```
+$ hello John
+Hello, John!
+$ hello Susan
+Hello, Susan!
+```
 
 
