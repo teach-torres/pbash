@@ -340,4 +340,5 @@ N is 1), then $0 would be discarded, $1 would become $0, $2 would become $1, and
 shifted by 1 position. There are some very clever and simple uses of shift to iterate through a list of paramters
 of unknown length.
 
-
+**Note** The shift function is distructive: that is, the paramters discarded are gone and cannot be
+retrieved again.
