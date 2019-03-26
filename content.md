@@ -1,7 +1,7 @@
 <!-- MarkdownTOC -->
 
 - [1. My first Program](#1-My-first-program)
-- [2. Matrix Calculus via Differentials](#1-matrix-calculus-via-differentials)
+- [2. Input, Output, and Throughput](#2-Input,-Output,-and-Throughput)
   * [2.1 Differential Identities](#11-differential-identities)
   * [2.2 Deriving Matrix Derivatives](#12-deriving-matrix-derivatives)
     + [2.2.1 Abstract examples: repeat identities 1](#121-abstract-examples-repeat-identities-1)
@@ -285,3 +285,29 @@ directory with two subdirectories, bin and scripts.
 executable; and then execute it.
 
 page 9/237
+
+## 2. Input, Output, and Throughput
+
+Two of the commands we used in chapter 1 are workhorses of the shell scripter’s stable: echo and printf.
+Both are bash builtin commands. Both print information to the standard output stream, but printf is much
+more powerful, and echo has its problems.
+
+In this chapter, I’ll cover echo and its problems, the capabilities of printf, the read command, and the
+standard input and output streams. I’ll start, however, with an overview of parameters and variables.
+
+### Parameter and Variables
+
+To quote the bash manual (type man bash at the command prompt to read it), “A parameter is an entity that
+stores values.” There are three types of parameters: positional parameters, special parameters, and variables.
+Positional parameters are arguments present on the command line, and they are referenced by a number.
+Special parameters are set by the shell to store information about aspects of its current state, such as the
+number of arguments and the exit code of the last command. Their names are nonalphanumeric characters
+(for example, *, #, and _). Variables are identified by a name. What’s in a name? I’ll explain that in the
+“Variables” section.
+
+The value of a parameter is accessed by preceding its name, number, or character with a dollar sign, as
+in $3, $#, or $HOME. The name may be surrounded by braces, as in ${10}, ${PWD}, or ${USER}.
+
+
+
+
