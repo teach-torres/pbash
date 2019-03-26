@@ -210,39 +210,58 @@ The following are the commands, concepts, and variables you learned in this chap
 #### Commands
 
 • pwd: Prints the name of the current working directory
+
 • cd: Changes the shell’s working directory
+
 • echo: Prints its arguments separated by a space and terminated by a newline
+
 • type: Displays information about a command
+
 • mkdir: Creates a new directory
+
 • chmod: Modifies the permissions of a file
+
 • source: a.k.a. . (dot): executes a script in the current shell environment
+
 • printf: Prints the arguments as specified by a format string
 
 #### Concepts
 
 • Script: This is a file containing commands to be executed by the shell.
+
 • Word: A word is a sequence of characters considered to be a single unit by the shell.
+
 • Output redirection: You can send the output of a command to a file rather than the
 terminal using > FILENAME.
+
 • Variables: These are names that store values.
+
 • Comments: These consist of an unquoted word beginning with #. All remaining
 characters on that line constitute a comment and will be ignored.
+
 • Shebang or hash-bang: This is a hash and an exclamation mark (#!) followed by the
 path to the interpreter that should execute the file.
+
 • Interpreter: This is a program that reads a file and executes the statements it contains.
 It may be a shell or another language interpreter such as awk or python.
 
 #### Concepts
 
 • Script: This is a file containing commands to be executed by the shell.
+
 • Word: A word is a sequence of characters considered to be a single unit by the shell.
+
 • Output redirection: You can send the output of a command to a file rather than the
 terminal using > FILENAME.
+
 • Variables: These are names that store values.
+
 • Comments: These consist of an unquoted word beginning with #. All remaining
 characters on that line constitute a comment and will be ignored.
+
 • Shebang or hash-bang: This is a hash and an exclamation mark (#!) followed by the
 path to the interpreter that should execute the file.
+
 • Interpreter: This is a program that reads a file and executes the statements it contains.
 It may be a shell or another language interpreter such as awk or python.
 
@@ -250,5 +269,6 @@ It may be a shell or another language interpreter such as awk or python.
 
 1. Write a script that creates a directory called bpl inside $HOME. Populate this
 directory with two subdirectories, bin and scripts.
+
 2. Write a script to create the “Hello, World!” script, hw, in $HOME/bpl/bin/; make it
 executable; and then execute it.
