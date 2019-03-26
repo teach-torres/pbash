@@ -461,17 +461,17 @@ they represent. Format specifiers are replaced with arguments from the command l
 
 Escape sequences are single letters preceded by a backslash:
 
-\a: : Alert (bell)
-\b: Backspace
-\e: Escape character
-\f: Form feed
-\n: Newline
-\r: Carriage return
-\t: Horizontal tab
-\v: Vertical tab
-\\: Backslash
-\nnn: A character specified by one to three octal digits
-\xHH: A character specified by one or two hexadecimal digits
+\a: : Alert (bell)<pr>
+\b: Backspace<pr>
+\e: Escape character<pr>
+\f: Form feed<pr>
+\n: Newline<pr>
+\r: Carriage return<pr>
+\t: Horizontal tab<pr>
+\v: Vertical tab<pr>
+\\: Backslash<pr>
+\nnn: A character specified by one to three octal digits<pr>
+\xHH: A character specified by one or two hexadecimal digits<pr>
 
 The backslashes must be protected from the shell by quotes or another backslash:
 
