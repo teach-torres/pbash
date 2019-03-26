@@ -1,7 +1,4 @@
-<script type="text/javascript" async
-src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js? 
-config=TeX-MML-AM_CHTML"
-</script>
+
 
 # Content
 ## My first Program
@@ -10,8 +7,6 @@ You should be in your home directory, which you can find in the variable $HOME:
 ```terminal
 $ echo "$HOME"
 ```
-
-$$x_{1,2} = \frac{-b \pm \sqrt{b^2-4ac}}{2b}.$$
 
 You can find the current directory with either the pwd command or the PWD variable:
 ```terminal
@@ -78,3 +73,64 @@ Now that it exists, it must be added to the PATH variable:
 ```terminal
 PATH=$PATH:$HOME/bin
 ```
+For this change to be applied to every shell you open, add it to a file that the shell will source when it is
+invoked. This will be .bash_profile, .bashrc, or .profile depending on how bash is invoked. These files
+are sourced only for interactive shells, not for scripts.
+
+. (a period) is a bash shell built-in command that executes the commands from a file passed as argument, 
+in the current shell. 'source' is a synonym for '.'.
+
+source command executes the provided script (executable permission is not mandatory) in the current 
+shell environment, while ./ executes the provided executable script in a new shell.
+
+source command do have a synonym . filename.
+
+>> To make it more clear, have a look at the following script, which sets the alias.
+make_alias
+
+#! /bin/bash
+
+alias myproject='cd ~/Documents/Projects/2015/NewProject'
+
+Now we have two choices to execute this script. But with only one option, the desired alias for current shell can be created among these two options.
+Option 1: ./make_alias
+
+Make script executable first.
+
+chmod +x make_alias
+
+Execute
+
+./make_alias
+
+Verify
+
+alias
+
+Output
+
+**nothing**
+
+Whoops! Alias is gone with the new shell.
+
+Let's go with the second option.
+Option 2: source make_alias
+Execute
+
+source make_alias
+
+or
+
+. make_alias
+
+Verify
+
+alias
+
+Output
+
+alias myproject='cd ~/Documents/Projects/2015/NewProject'
+
+Yeah Alias is set.
+
+
