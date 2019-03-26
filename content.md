@@ -290,7 +290,7 @@ page 9/237
 
 Two of the commands we used in chapter 1 are workhorses of the shell scripter’s stable: echo and printf.
 Both are bash builtin commands. Both print information to the standard output stream, but printf is much
-more powerful, and echo has its problems.
+more powerful, and echo has its problems. 
 
 In this chapter, I’ll cover echo and its problems, the capabilities of printf, the read command, and the
 standard input and output streams. I’ll start, however, with an overview of parameters and variables.
