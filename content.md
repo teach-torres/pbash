@@ -420,7 +420,76 @@ No newline$ echo "No newline\c"
 No newline$
 ```
 
+The BSD variety of echo accepted the option -n, which suppressed the newline. AT&T’s version used an
+escape sequence, \c, to do the same thing. Or was it the other way round? I have a hard time remembering
+which was which because, although I was using an AT&T system (hardware and operating system), its echo
+command accepted both AT&T and BSD syntax.
 
+That, of course, is history. In this book, we’re dealing with bash, so why does it matter? bash has the
+-e option to activate escape sequences such as \c but by default uses -n to prevent a newline from being
+printed. (The escape sequences recognized by echo -e are the same as those described in the next section,
+with the addition of \c).
+
+> Tip Add –e to the echo command if you want the escape sequences to be recognized.
+
+The trouble is that bash has an xpg_echo option (XPG stands for X/Open Portability Guide, a
+specification for Unix systems) that makes echo behave like that other version. This can be turned on or off
+while in the shell (using shopt -s xpg_echo either at the command line or in a script), or it can be turned on
+when the shell is compiled. In other words, even in bash, you cannot be absolutely sure which behavior you
+are going to get.
+
+If you limit the use of echo to situations where there cannot be a conflict, that is, where you are sure the
+arguments do not begin with -n and do not contain escape sequences, you will be fairly safe. For everything
+else (or if you’re not sure), use printf.
+
+### printf: Formatting and Printing Data
+
+Derived from the C programming language function of the same name, the shell command printf is similar
+in purpose but differs in some of the details. Like the C function, it uses a format string to indicate how to
+present the rest of its arguments:
+
+```
+printf FORMAT ARG ...
+
+```
+
+The FORMAT string can contain ordinary characters, escape sequences, and format specifiers. Ordinary
+characters are printed unchanged to the standard output. Escape sequences are converted to the characters
+they represent. Format specifiers are replaced with arguments from the command line.
+
+#### Escape Sequences
+
+Escape sequences are single letters preceded by a backslash:
+
+\a: : Alert (bell)
+
+\b: Backspace
+
+\e: Escape character
+
+\f: Form feed
+
+\n: Newline
+
+\r: Carriage return
+
+\t: Horizontal tab
+
+\v: Vertical tab
+
+\\: Backslash
+
+\nnn: A character specified by one to three octal digits
+
+\xHH: A character specified by one or two hexadecimal digits
+
+The backslashes must be protected from the shell by quotes or another backslash:
+
+```
+$ printf "Q\t\141\n\x42\n"
+Q a
+B
+```
 
 
 
