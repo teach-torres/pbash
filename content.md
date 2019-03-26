@@ -1,7 +1,7 @@
 <!-- MarkdownTOC -->
 
 - [1. My first Program](#1-My-first-program)
-- [2. Input, Output, and Throughput](#2-Input,-Output,-and-Throughput)
+- [2. Input, Output, and Throughput](#2-Input-Output-and-Throughput)
   * [2.1 Differential Identities](#11-differential-identities)
   * [2.2 Deriving Matrix Derivatives](#12-deriving-matrix-derivatives)
     + [2.2.1 Abstract examples: repeat identities 1](#121-abstract-examples-repeat-identities-1)
