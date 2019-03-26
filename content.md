@@ -342,3 +342,62 @@ of unknown length.
 
 **Note** The shift function is distructive: that is, the paramters discarded are gone and cannot be
 retrieved again.
+
+#### Special *@#0$?_!- Parameters
+
+The first two special parameters, $* and $@, expand to the value of all the positional parameters combined.
+$# expands to the number of positional parameters. $0 contains the path to the currently running script or to
+the shell itself if no script is being executed.
+
+$$ contains the process identification number (PID) of the current process, $? is set to the exit code of
+the last-executed command, and $_ is set to the last argument to that command. $! contains the PID of the
+last command executed in the background, and $- is set to the option flags currently in effect.
+I’ll discuss these parameters in more detail as they come up in the course of writing scripts.
+
+**Variables**
+
+A variable is a parameter denoted by a name; a name is a word containing only letters, numbers, or
+underscores and beginning with a letter or an underscore.
+
+Values can be assigned to variables in the following form:
+
+name=VALUE
+
+> Note: Bash is very particular about spacing: note that there are no spaces before the = and none after. If
+you have spaces, the command would not work.
+
+Many variables are set by the shell itself, including three you have already seen: HOME, PWD, and PATH.
+With only two minor exceptions, auto_resume and histchars, all the variables set by the shell are all
+uppercase letters.
+
+### Arguments and Options
+
+The words entered after the command are its arguments. These are words separated by whitespace (one or
+more spaces or tabs). If the whitespace is escaped or quoted, it no longer separates words but becomes part
+of the word.
+
+The following command lines all have four arguments:
+```
+echo 1 '2 3' 4 5
+echo -n Now\ is the time
+printf "%s %s\n" one two three
+```
+
+In the first line, the spaces between 2 and 3 are quoted because they are surrounded by single quotation
+marks. In the second, the space after now is escaped by a backslash, which is the shell’s escape character.
+In the final line, a space is quoted with double quotes.
+
+In the second command, the first argument is an option. Traditionally, options to Unix commands are
+a single letter preceded by a hyphen, sometimes followed by an argument. The GNU commands found in
+Linux distributions often accept long options as well. These are words preceded by a double hyphen. For
+example, most GNU utilities have an option called --version that prints the version:
+
+```
+$ bash --version
+GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+```
+
