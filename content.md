@@ -401,3 +401,26 @@ This is free software; you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 ```
 
+### echo, and Why You Should Avoid It
+
+When I started writing shell scripts, I soon learned about the two main branches of Unix: AT&T’s System V
+and BSD. One of their differences was the behavior of echo. An internal command in all modern shells, echo
+prints its arguments with a single space between them to the standard output stream, followed by a newline:
+
+```
+$ echo The quick brown fox
+The quick brown fox
+```
+
+The default newline can be suppressed in one of two ways, depending on the shell:
+
+```
+$ echo -n No newline
+No newline$ echo "No newline\c"
+No newline$
+```
+
+
+
+
+
