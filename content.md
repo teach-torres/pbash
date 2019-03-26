@@ -330,4 +330,14 @@ $ hello Susan
 Hello, Susan!
 ```
 
+The Bourne shell could only address up to nine positional parameters. If a script used $10, it would be
+interpreted as $1 followed by a zero. To be able to run old scripts, bash maintains that behavior. To access
+positional parameters greater than 9, the number must be enclosed in braces: ${15}.
+
+The script is passed to the parameters that can be accessed via their positions, $0, $1, $2 and so on.
+The function shift N moves the positional parameters by N positions, if you ran shift (the default value of
+N is 1), then $0 would be discarded, $1 would become $0, $2 would become $1, and so on: they would all be
+shifted by 1 position. There are some very clever and simple uses of shift to iterate through a list of paramters
+of unknown length.
+
 
