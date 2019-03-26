@@ -107,6 +107,9 @@ Now the command can be run using just its name:
 $ hw
 Hello, World!
 ```
+
+### Source command
+
 . (a period) is a bash shell built-in command that executes the commands from a file passed as argument, 
 in the current shell. 'source' is a synonym for '.'.
 
