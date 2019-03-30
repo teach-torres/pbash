@@ -18,3 +18,19 @@ reason, $? will contain a positive integer between 1 and 255, inclusive. A faile
 Zero and non-zero exit codes are also known as true and false, respectively.
 
 A command may fail because of a syntax error:
+
+```
+$ printf "%v\n"
+bash: printf: `v': invalid format character
+$ echo $?
+1
+```
+
+Alternatively, failure may be the result of the command not being able to accomplish its task:
+
+```
+$ mkdir /qwerty
+bash: mkdir: cannot create directory `/qwerty': Permission denied
+$ echo $?
+1
+```
