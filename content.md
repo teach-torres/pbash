@@ -659,6 +659,108 @@ At the end of the report script, the last four lines are read as a single line, 
 A backslash at the end of a line tells the shell to ignore the newline character, effectively joining the next line
 to the current one.
 
+### Standard Input/Output Streams and Redirection
 
+In Unix (of which Linux is a variety), everything is a stream of bytes. The streams are accessible as files, but
+there are three streams that are rarely accessed by a filename. These are the input/output (I/O) streams
+attached to every command: standard input, standard output, and standard error. By default, these streams
+are connected to your terminal.
 
+When a command reads a character or a line, it reads from the standard input stream, which is the
+keyboard. When it prints information, it is sent to the standard output, your monitor. The third stream,
+standard error, is also connected to your monitor; as the name implies, it is used for error messages. These
+streams are referred to by numbers, called file descriptors (FDs). These are 0, 1, and 2, respectively.
+The stream names are also often contracted to stdin, stdout, and stderr.
+I/O streams can be redirected to (or from) a file or into a pipeline.
 
+#### Redirection: >, >>, and <
+
+In chapter 1, you redirected standard output to a file using the > redirection operator.
+When redirecting using >, the file is created if it doesn’t exist. If it does exist, the file is truncated to
+zero length before anything is sent to it. You can create an empty file by redirecting an empty string
+(that is, nothing) to the file:
+
+```
+printf "" > FILENAME
+```
+
+or by simply using this:
+
+```
+> FILENAME
+```
+
+Redirection is performed before any command on the line is executed. If you redirect to the same file
+you are reading from, that file will be truncated, and the command will have nothing to read.
+The >> operator doesn’t truncate the destination file; it appends to it. You could add a line to the
+hw command from the first chapter by doing the following:
+
+```
+echo exit 0 >> bin/hw
+```
+
+Redirecting standard output does not redirect standard error. Error messages will still be displayed on
+your monitor. To send the error messages to a file – in other words, to redirect FD2 – the redirection operator
+is preceded by the FD.
+
+Both standard output and standard error can be redirected on the same line. The next command sends
+standard output to FILE and standard error to ERRORFILE:
+
+```
+$ printf '%s\n%v\n' OK? Oops! > FILE 2> ERRORFILE
+$ cat ERRORFILE
+bash4: printf: `v': invalid format character
+```
+
+In this case, the error message is going to a special file, /dev/null. Sometimes called the bit bucket,
+anything written to it is discarded.
+
+```
+printf '%s\n%v\n' OK? Oops! 2>/dev/null
+```
+Instead of sending output to a file, it can be redirected to another I/O stream by using >&N where N is the
+number of the file descriptor. This command sends both standard output and standard error to FILE:
+
+```
+printf '%s\n%v\n' OK? Oops! > FILE 2>&1
+```
+
+Here, the order is important. The standard output is sent to FILE, and then standard error is redirected
+to where standard output is going. If the order is reversed, the effect is different. The redirection sends
+standard error to wherever standard output is currently going and then changes where standard output goes.
+Standard error still goes to where standard output was originally directed:
+
+```
+printf '%s\n%v\n' OK? Oops! 2>&1 > FILE
+```
+
+bash has also a nonstandard syntax for redirecting both standard output and standard error to the
+same place:
+
+```
+&> FILE
+```
+
+To append both standard output and standard error to FILE, use this:
+
+```
+&>> FILE
+```
+
+A command that reads from standard input can have its input redirected from a file:
+
+```
+tr, H wY < bin/hw
+```
+
+You can use the exec command to redirect the I/O streams for the rest of the script or until it’s
+changed again.
+
+```
+exec 1>tempfile
+exec 0<datafile
+exec 2>errorrfile
+```
+
+All standard output will now go to the file tempfile, input will be read from datafile, and error
+messages will go to errorfile without having to specify it for every command.
