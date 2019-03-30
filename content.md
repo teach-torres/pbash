@@ -599,6 +599,66 @@ Walt 2.90
 
 The script shown in. Listing 2-2 uses printf to output a simple sales report.
 
+Listing 2-2. Report
+```
+#!/bin/bash
+#: Description : print formatted sales report
+
+## Build a long string of equals signs
+divider=====================================
+divider=$divider$divider
+
+## Format strings for printf
+header="\n %-10s %11s %8s %10s\n"
+format=" %-10s %11.2f %8d %10.2f\n"
+
+## Width of divider
+totalwidth=44
+
+## Print categories
+printf "$header" ITEM "PER UNIT" NUM TOTAL
+
+## Print divider to match width of report
+printf "%$totalwidth.${totalwidth}s\n" "$divider"
+
+## Print lines of report
+printf "$format" \
+     Chair 79.95 4 319.8 \
+     Table 209.99 1 209.99 \
+     Armchair 315.49 2 630.98
+```     
+
+The resulting report looks like this:
+
+```
+ITEM        PER UNIT   NUM      TOTAL
+============================================
+Chair          79.95     4      319.80
+Table         209.99     1      209.99
+Armchair      315.49     2      630.98
+```
+
+Note the use of braces around the second totalwidth variable name: ${totalwidth}. In the first
+instance, the name is followed by a period, which cannot be part of a variable name. In the second, it is
+followed by the letter s, which could be, so the totalwidth name must be separated from it by using braces.
+
+#### Printing to a Variable
+
+With version 3.1, bash added a -v option to store the output in a variable instead of printing it to the standard
+output:
+
+```
+$ printf -v num4 "%04d" 4
+$ printf "%s\n" "$num4"
+0004
+```
+
+Line Continuation
+
+At the end of the report script, the last four lines are read as a single line, using line continuation.
+A backslash at the end of a line tells the shell to ignore the newline character, effectively joining the next line
+to the current one.
+
 
 
 
