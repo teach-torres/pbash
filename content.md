@@ -764,3 +764,135 @@ exec 2>errorrfile
 
 All standard output will now go to the file tempfile, input will be read from datafile, and error
 messages will go to errorfile without having to specify it for every command.
+
+### Reading Input
+
+The read commandis a builtin command that reads from the standard input. By default, it reads until a
+newline is received. The input is stored in one or more variables given as arguments:
+
+```
+read var
+```
+
+If more than one variable is given, the first word (the input up to the first space or tab) is assigned to the
+first variable, the second word is assigned to the second variable, and so on, with any leftover words assigned
+to the last one:
+
+```
+$ read a b c d
+January February March April May June July August
+$ echo $a
+January
+$ echo $b
+February
+$ echo $c
+March
+$ echo $d
+April May June July August
+```
+
+The bash version of read has several options. Only the -r option is recognized by the POSIX standard.
+It tells the shell to interpret escape sequences literally.
+
+By default, read strips backslashes from the input, and the following character is taken literally. The
+major effect of this default behavior is to allow the continuation of lines. With the -r option, a backslash
+followed by a newline is read as a literal backslash and the end of input.
+
+Like any other command that reads standard input, read can get its input from a file through
+redirection. For example, to read the first line from FILENAME, use this:
+
+```
+read var < FILENAME
+```
+
+### Pipelines
+
+Pipelines connect the standard output of one command directly to the standard input of another. The pipe
+symbol (|) is used between the commands:
+```
+$ printf "%s\n" "$RANDOM" "$RANDOM" "$RANDOM" "$RANDOM" | tee FILENAME
+618
+11267
+5890
+8930
+```
+
+The tee command reads from the standard input and passes it to one or more files as well as to the
+standard output. $RANDOM is a bash variable that returns a different integer between 0 and 32,767 each time it
+is referenced.
+
+```
+$ cat FILENAME
+618
+11267
+5890
+8930
+```
+
+### Command Substitution
+
+The output of a command can be stored in a variable using command substitution. There are two forms for
+doing this. The first, which originated in the Bourne shell, uses backticks:
+
+```
+date=`date`
+```
+
+The newer (and recommended) syntax is as follows:
+
+```
+date=$( date )
+```
+
+Command substitution should generally be reserved for external commands. When used with a builtin
+command, it is very slow. That is why the -v option was added to printf.
+
+#### Summary
+
+The following are the commands and concepts you learned in this chapter.
+
+Commands
+
+• cat: Prints the contents of one or more files to the standard output
+
+• tee: Copies the standard input to the standard output and to one or more files
+
+• read: A builtin shell command that reads a line from the standard input
+
+• date: Prints the current date and time
+
+Concepts
+
+• Standard I/O streams: These are streams of bytes from which commands read and to
+which output is sent.
+
+• Arguments: These are words that follow a command; arguments may include options
+as well as other information such as filenames.
+
+• Parameters: These are entities that store values; the three types are positional
+parameters, special parameters, and variables.
+
+• Pipelines: A pipeline is a sequence of one or more commands separated by |; the
+standard output of the command preceding the pipe symbol is fed to the standard
+input of the command following it.
+
+• Line continuation: This is a backslash at the end of a line that removes the newline
+and combines that line with the next.
+
+• Command substitution: This means storing the output of a command in a variable or
+on the command line.
+
+### Exercises
+
+1. What is wrong with this command?
+tr A Z < $HOME/temp > $HOME/temp
+2. Write a script, using $RANDOM, to write the following output both to a file and to a
+variable. The following numbers are only to show the format; your script should
+produce different numbers:
+
+```
+ 1988.2365
+13798.14178
+10081.134
+ 3816.15098
+```
