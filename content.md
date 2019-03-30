@@ -491,5 +491,114 @@ Q a
 B
 ```
 
+Format Specifiers
+
+The format specifiers are letters preceded by a percent sign. Optional modifiers may be placed between the
+two characters. The specifiers are replaced by thecorresponding argument. When there are more arguments
+than specifiers, the format string is reused until all the arguments have been consumed. The most
+commonly used specifiers are %s, %d, %f, and %x.
+
+The %s specifier prints the literal characters in the argument:
+```
+$ printf "%s\n" Print arguments on "separate lines"
+Print
+arguments
+on
+separate lines
+```
+
+%b is like %s except that escape sequences in the arguments are translated:
+```
+$ printf "%b\n" "Hello\nworld" "12\tword"
+Hello
+world
+12 word
+```
+
+Integers are printed with %d. The integer may be specified as a decimal, octal (using a leading 0), or
+hexadecimal (preceding the hex number with 0x) number. If the number is not a valid integer, printf prints
+an error message:
+
+```
+$ printf "%d\n" 23 45 56.78 0xff 011
+23
+45
+bash: printf: 56.78: invalid number
+0
+255
+9
+```
+
+For decimal fractions or floating-point numbers, use %f. By default they will be printed with six decimal
+places:
+
+```
+$ printf "%f\n" 12.34 23 56.789 1.2345678
+12.340000
+23.000000
+56.789000
+1.234568
+```
+
+Floating-point numbers can be presented in exponential (also known as scientific) notation using %e:
+
+```
+$ printf "%e\n" 12.34 23 56.789 123.45678
+1.234000e+01
+2.300000e+01
+5.678900e+01
+1.234568e+02
+```
+
+Integers can be printed in hexadecimal using %x for lowercase letters or %X for uppercase letters. For
+example, when specifying colors for a web page, they are specified in hex notation. I know from the rgb.txt
+file included with the X Window system that the red-green-blue values for royal blue are 65, 105, and 225.
+To convert them to a style rule for a web page, use this:
+
+```
+$ printf "color: #%02x%02x%02x;\n" 65 105 225
+color: #4169e1;
+```
+
+#### Width Specification
+
+You can modify the formats by following the percent sign with a width specification. The argument will be
+printed flush right in a field of that width or will be flush left if the number is negative. Here we have the first
+field with a width of eight characters; the words will be printed flush right. Then there is a field 15 characters
+wide that will be printed flush left:
+
+```
+$ printf "%8s %-15s:\n" first second third fourth fifth sixth
+first second :
+third fourth :
+fifth sixth :
+```
+
+If the width specification is preceded by a 0, the numbers are padded with leading zeroes to fill
+the width:
+
+```
+$ printf "%04d\n" 12 23 56 123 255
+0012
+0023
+0056
+0123
+0255
+```
+
+
+A width specifier with a decimal fraction specifies the precision of a floating-point number or
+the maximum width of a string:
+
+```
+$ printf "%12.4s %9.2f\n" John 2 Jackson 4.579 Walter 2.9
+John 2.00
+Jack 4.58
+Walt 2.90
+```
+
+The script shown in. Listing 2-2 uses printf to output a simple sales report.
+
+
 
 
