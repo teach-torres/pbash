@@ -169,7 +169,7 @@ alias myproject='cd ~/Documents/Projects/2015/NewProject'
 ```
 Yeah Alias is set.
 
-### TExt Editor
+### Text Editor
 
 **Note** In Windows text files, !” lines end with two characters: a carriage return (CR) and a linefeed (LF).
 On Unix systems, such as Linux, lines end with a single linefeed. If you write your programs in a Windows text
@@ -245,7 +245,7 @@ It may be a shell or another language interpreter such as awk or python.
 ### Exercises
 
 1. Write a script that creates a directory called bpl inside $HOME. Populate this
-directory with two subdirectories, hbin and scripts.
+directory with two subdirectories, bin and scripts.
 
 2. Write a script to create the “Hello, World!” script, hw, in $HOME/bpl/bin/; make it
 executable; and then execute it.
