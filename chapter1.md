@@ -245,7 +245,7 @@ It may be a shell or another language interpreter such as awk or python.
 ### Exercises
 
 1. Write a script that creates a directory called bpl inside $HOME. Populate this
-directory with two subdirectories, bin and scripts.
+directory with two subdirectories, hbin and scripts.
 
 2. Write a script to create the “Hello, World!” script, hw, in $HOME/bpl/bin/; make it
 executable; and then execute it.
